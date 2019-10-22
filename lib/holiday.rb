@@ -1,4 +1,20 @@
 require 'pry'
+our_hash = {
+  :winter => {
+    :christmas => ["Lights", "Wreath"],
+    :new_years => ["Party Hats"]
+  },
+  :summer => {
+    :fourth_of_july => ["Fireworks", "BBQ"]
+  },
+  :fall => {
+    :thanksgiving => ["Turkey"]
+  },
+  :spring => {
+    :memorial_day => ["BBQ"]
+  }
+}
+
 
 def second_supply_for_fourth_of_july(holiday_hash)
   holiday_hash.each do |season, holiday_supplies_hash|
@@ -41,9 +57,8 @@ def add_supply_to_memorial_day(holiday_hash, supply)
 end
 
 def add_new_holiday_with_supplies(holiday_hash, season, holiday_name, supply_array)
-
-
-  binding.pry
+holiday_hash[season][holiday_name] = supply_array
+  #binding.pry
 
 
   # code here
@@ -61,6 +76,20 @@ def all_winter_holiday_supplies(holiday_hash)
 end
 
 def all_supplies_in_holidays(holiday_hash)
+  holiday_hash.each do |season, holidays|
+    puts season.to_s.capitalize + ":"
+    holidays.each do |holiday, supplies|
+      puts holiday.to_s.split("_")#capitalize + ":"
+
+      binding.pry
+
+    end
+  end
+end
+
+all_supplies_in_holidays(our_hash)
+
+
   # iterate through holiday_hash and print items such that your readout resembles:
   # Winter:
   #   Christmas: Lights, Wreath
@@ -69,7 +98,8 @@ def all_supplies_in_holidays(holiday_hash)
   #   Fourth Of July: Fireworks, BBQ
   # etc.
 
-end
+
+
 
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
